@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.io.Serializable;
@@ -11,6 +12,8 @@ import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
+
+@Document(collection = "userpokemons")
 public class UserPokemonDTO implements Serializable {
 
     @Id
