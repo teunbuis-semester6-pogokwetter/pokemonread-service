@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/userpokemon")
+@RequestMapping("api/userpokemonread")
 public class UserPokemonController {
     @Autowired
     UserPokemonService service;
