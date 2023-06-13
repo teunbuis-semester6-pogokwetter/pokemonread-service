@@ -29,7 +29,7 @@ public class PokemonController {
                 return ResponseEntity.ok().body(pokemon);
             }
             else {
-                return ResponseEntity.notFound().build();
+                return ResponseEntity.noContent().build();
             }
         }
         catch (Exception e){
@@ -46,7 +46,7 @@ public class PokemonController {
 
             }
             else {
-                return ResponseEntity.notFound().build();
+                return ResponseEntity.noContent().build();
             }
         }
         catch (Exception e){

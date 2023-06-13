@@ -28,7 +28,7 @@ public class PokemonImgcontroller {
                 return ResponseEntity.ok().body(pokemonImgs);
             }
             else{
-                return ResponseEntity.notFound().build();
+                return ResponseEntity.noContent().build();
             }
         }
         catch (Exception e){
@@ -45,7 +45,7 @@ public class PokemonImgcontroller {
                 return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(image);
             }
             else{
-                return ResponseEntity.notFound().build();
+                return ResponseEntity.noContent().build();
             }
         }
         catch (Exception e){

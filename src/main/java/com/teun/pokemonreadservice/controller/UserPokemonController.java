@@ -25,7 +25,7 @@ public class UserPokemonController {
                 return ResponseEntity.ok().body(userPokemonDTOs);
             }
             else {
-                return ResponseEntity.notFound().build();
+                return ResponseEntity.noContent().build();
             }
         }
         catch (Exception e){
@@ -42,7 +42,7 @@ public class UserPokemonController {
                 return ResponseEntity.ok().body(userPokemonDTOs);
             }
             else {
-                return ResponseEntity.notFound().build();
+                return ResponseEntity.noContent().build();
             }
         }
         catch (Exception e){
