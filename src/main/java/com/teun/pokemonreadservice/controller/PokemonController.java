@@ -1,6 +1,6 @@
 package com.teun.pokemonreadservice.controller;
 
-import com.teun.pokemonreadservice.models.Pokemon;
+import com.teun.pokemonreadservice.dto.PokemonDTO;
 import com.teun.pokemonreadservice.service.PokemonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +22,9 @@ public class PokemonController {
 
     Logger logger = LoggerFactory.getLogger(PokemonController.class);
     @GetMapping("/dex/{dexNumber}")
-    public ResponseEntity<Pokemon> getPokemonById(@PathVariable(value = "dexNumber")Long dexNumber){
+    public ResponseEntity<PokemonDTO> getPokemonById(@PathVariable(value = "dexNumber")Long dexNumber){
         try{
-            Pokemon pokemon = service.findPokemonByDexNumber(dexNumber);
+            PokemonDTO pokemon = service.findPokemonByDexNumber(dexNumber);
             if(pokemon != null){
                 return ResponseEntity.ok().body(pokemon);
             }
@@ -38,9 +38,9 @@ public class PokemonController {
         }
     }
     @GetMapping()
-    public ResponseEntity<List<Pokemon>> getAllPokemon(){
+    public ResponseEntity<List<PokemonDTO>> getAllPokemon(){
         try{
-            List<Pokemon> pokemons = service.findAllPokemon();
+            List<PokemonDTO> pokemons = service.findAllPokemon();
             if(pokemons != null){
                 return ResponseEntity.ok().body(pokemons);
 

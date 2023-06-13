@@ -1,11 +1,11 @@
 package com.teun.pokemonreadservice.repo;
 
-import com.teun.pokemonreadservice.models.Pokemon;
+import com.teun.pokemonreadservice.dto.PokemonDTO;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface PokemonRepo extends MongoRepository<Pokemon, String> {
-    Optional<Pokemon> findByDexNumber(Long dexNumber);
-    Optional<Pokemon> findByName(String name);
+public interface PokemonRepo extends MongoRepository<PokemonDTO, String> {
+    Optional<PokemonDTO> findByDexNumber(Long dexNumber);
+    Optional<PokemonDTO> findByName(String name);
 }

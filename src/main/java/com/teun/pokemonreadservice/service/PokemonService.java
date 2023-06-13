@@ -1,5 +1,6 @@
 package com.teun.pokemonreadservice.service;
 
+import com.teun.pokemonreadservice.dto.PokemonDTO;
 import com.teun.pokemonreadservice.models.Pokemon;
 import com.teun.pokemonreadservice.repo.PokemonRepo;
 import org.slf4j.Logger;
@@ -16,24 +17,24 @@ public class PokemonService {
     @Autowired
     PokemonRepo repo;
     Logger logger = LoggerFactory.getLogger(PokemonService.class);
-    public Pokemon findPokemonByDexNumber(long dexNumber){
+    public PokemonDTO findPokemonByDexNumber(long dexNumber){
         return findByPokemonDexNumberFromDatabase(dexNumber);
     }
-    public Pokemon findPokemonByName(String name){
+    public PokemonDTO findPokemonByName(String name){
         return findByNameFromDataBase(name);
     }
-    public List<Pokemon> findAllPokemon(){
+    public List<PokemonDTO> findAllPokemon(){
         return findAllFromDataBase();
     }
-    private List<Pokemon> findAllFromDataBase(){
+    private List<PokemonDTO> findAllFromDataBase(){
         logger.info(FROM_DATABASE);
         return repo.findAll();
     }
-    private Pokemon findByNameFromDataBase(String name){
+    private PokemonDTO findByNameFromDataBase(String name){
         logger.info(FROM_DATABASE);
         return repo.findByName(name).orElse(null);
     }
-    private Pokemon findByPokemonDexNumberFromDatabase(long dexNumber){
+    private PokemonDTO findByPokemonDexNumberFromDatabase(long dexNumber){
         logger.info(FROM_DATABASE);
         return repo.findByDexNumber(dexNumber).orElse(null);
     }
