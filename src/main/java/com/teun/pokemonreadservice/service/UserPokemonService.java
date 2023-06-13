@@ -42,9 +42,9 @@ public class UserPokemonService {
     }
 
     private List<UserPokemonDTO> findAllByUserIdFromDatabase(long userId){
-        List<UserPokemon> found = repo.findByUserId(userId);
+        List<UserPokemonDTO> found = repo.findByUserId(userId);
         logger.info(FROM_DATABASE);
-        return modelMapper.map(found, List.class);
+        return found;
     }
 
     private UserPokemonDTO saveUserPokemonToDatabase(UserPokemonDTO userPokemonDTO){
