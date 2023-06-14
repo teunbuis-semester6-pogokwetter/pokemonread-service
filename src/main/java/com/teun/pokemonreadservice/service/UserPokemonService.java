@@ -29,8 +29,11 @@ public class UserPokemonService {
     public void deleteUserPokemon(UserPokemonDTO userPokemonDTO){
         deleteUserPokemonFromDataBase(userPokemonDTO);
     }
+    public void deleteUserPokemonByUserId(Long userId){
+        deleteUserPokemonFromDataBaseByUserId(userId);
+    }
 
-//    @Cacheable(value = "userpokemoncache")
+    //    @Cacheable(value = "userpokemoncache")
     public List<UserPokemonDTO> findAll(){
         logger.info("found userpokemons");
         return findAllFromDataBase();
@@ -59,6 +62,10 @@ public class UserPokemonService {
     }
     private void deleteUserPokemonFromDataBase(UserPokemonDTO userPokemonDTO){
         repo.delete(userPokemonDTO);
+    }
+
+    private void deleteUserPokemonFromDataBaseByUserId(Long userId) {
+        repo.deleteAllByUserId(userId);
     }
 
 //    public void updateCache(String cacheKey){

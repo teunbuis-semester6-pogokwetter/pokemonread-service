@@ -1,5 +1,6 @@
 package com.teun.pokemonreadservice.rabbitmq;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teun.pokemonreadservice.dto.UserPokemonDTO;
 import com.teun.pokemonreadservice.service.UserPokemonService;
@@ -33,6 +34,20 @@ public class MessageListener {
         }
         else{
             logger.info("COULD NOT DELETE USERPOKEMON!");
+        }
+    }
+
+    @RabbitListener(queues = "user_delete_queue")
+    public void handleDeleteUser(String message){
+        logger.info("Received user id for deletion");
+        try {
+            Long userId = objectMapper.readValue(message, Long.class);
+            if(userId != null ){
+                service.deleteUserPokemonByUserId(userId);
+
+            }
+        } catch (JsonProcessingException e) {
+            logger.error("ERROR: " + e);
         }
     }
 }

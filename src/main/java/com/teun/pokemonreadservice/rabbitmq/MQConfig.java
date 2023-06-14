@@ -24,6 +24,25 @@ public class MQConfig {
 
     static final String DELETEROUTINGKEY = "userpokemon_delete_routingkey";
 
+    static final String QUEUE_USER_DELETE = "user_delete_queue";
+
+    static final String EXCHANGE_USER_DELETE = "user_exchange_delete";
+
+    static final String ROUTINGKEY_USER_DELETE = "user_delete_routingkey";
+
+    @Bean
+    Queue userDeleteQueue(){
+        return new Queue(QUEUE_USER_DELETE, true);
+    }
+    @Bean
+    TopicExchange userDeleteExchange(){
+        return new TopicExchange(EXCHANGE_USER_DELETE);
+    }
+    @Bean
+    Binding bindingUserDelete(){
+        return BindingBuilder.bind(userDeleteQueue()).to(userDeleteExchange()).with(ROUTINGKEY_USER_DELETE);
+    }
+
     @Bean
     Queue userPokemonQueue(){
         return new Queue(QUEUENAME, true);
@@ -40,8 +59,8 @@ public class MQConfig {
     }
 
     @Bean
-    Binding binding(TopicExchange exchange){
-        return BindingBuilder.bind(userPokemonQueue()).to(exchange).with(ROUTINGKEY);
+    Binding binding(){
+        return BindingBuilder.bind(userPokemonQueue()).to(userPokemonExchange()).with(ROUTINGKEY);
     }
     @Bean
     Binding bindingDelete(){

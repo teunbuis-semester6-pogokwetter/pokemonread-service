@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserPokemonRepo extends MongoRepository<UserPokemonDTO, String> {
     List<UserPokemonDTO> findByUserId(Long userId);
     List<UserPokemonDTO> findByNickName(String nickName);
+
+    void deleteAllByUserId(Long userId);
 }
