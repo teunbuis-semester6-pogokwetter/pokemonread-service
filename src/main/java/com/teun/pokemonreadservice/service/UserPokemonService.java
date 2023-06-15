@@ -66,6 +66,7 @@ public class UserPokemonService {
 
     private void deleteUserPokemonFromDataBaseByUserId(Long userId) {
         repo.deleteAllByUserId(userId);
+        logger.info("Deleted all userId from db with userId: " + userId);
     }
 
 //    public void updateCache(String cacheKey){

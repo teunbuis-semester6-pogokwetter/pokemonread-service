@@ -44,7 +44,6 @@ public class MessageListener {
             Long userId = objectMapper.readValue(message, Long.class);
             if(userId != null ){
                 service.deleteUserPokemonByUserId(userId);
-
             }
         } catch (JsonProcessingException e) {
             logger.error("ERROR: " + e);
